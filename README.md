@@ -7,25 +7,26 @@ This repo get commands from https://wiki.zimbra.com/wiki/Mysql_Crash_Recovery
 # Instruction
 * Clone this repo
 ```
-git clone 
-cd ~/sdsdsd
+su - zimbra
+git clone https://github.com/Rp70/fix-zimbra-innodb-crash fix-zimbra-innodb-crash
+cd ~/fix-zimbra-innodb-crash
 ```
 * Edit the file /opt/zimbra/conf/my.cnf and add a line like innodb_force_recovery = 1 under the [mysqld] section (Note that it may be necessary to increase the recovery level depending on the extent of the database corruption, as shown at the end of the database dump step)
 * Backup all databases
 ```
-cd ~/dsfdsf
-
+cd ~/fix-zimbra-innodb-crash
+./backup.all.sh
 ```
 * If everything goes well, drop all existing databases
 ```
+cd ~/fix-zimbra-innodb-crash
+./drop.all.sh
 ```
 * If everything goes well, disable recover mode
     * Remove the innodb_force_recovery line from /opt/zimbra/conf/my.cnf
     * Save the file and restart mysqld `mysql.server restart`
 * Then, load all dumped dadtabases
 ```
-Remove the innodb_force_recovery line from /opt/zimbra/conf/my.cnf
-Save the file and restart mysqld
-
+cd ~/fix-zimbra-innodb-crash
+./restore.all.sh
 ```
-
