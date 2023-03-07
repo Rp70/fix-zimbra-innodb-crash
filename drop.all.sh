@@ -6,11 +6,13 @@ echo "This will sleep for 45 seconds before start dropping all databases. If you
 sleep 45
 
 echo "Droping all databases"
-for db in `cat /tmp/mysql.db.list |grep mbox`
+for db in `cat /tmp/mysql.db.list | grep mbox`
 do
-    mysql -u root --password=$mysql_root_password -e "drop database $db"
+    mysql -u root --password=$mysql_root_password -e "DROP DATABASE $db"
     echo -e "Dropped $db"
 done
-mysql -u root --password=$mysql_root_password -e "drop database zimbra"
+mysql -u root --password=$mysql_root_password -e "DROP DATABASE IF EXISTS chat"
+echo "Dropped chat (if exists)"
+mysql -u root --password=$mysql_root_password -e "DROP DATABASE zimbra"
 echo "Dropped zimbra"
 rm -rf /opt/zimbra/db/data/ib*
