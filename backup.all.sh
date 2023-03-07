@@ -12,7 +12,6 @@ mysql --batch --skip-column-names -e "show databases" | grep -e mbox -e zimbra -
 mkdir -p /tmp/mysql.sql
 for db in `cat /tmp/mysql.db.list`; do
     mysqldump $db -S $mysql_socket -u root --password=$mysql_root_password > /tmp/mysql.sql/$db.sql
-    echo error code $?
     echo "Dumped $db"
     sleep 10
 done
