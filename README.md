@@ -21,7 +21,10 @@ git clone https://github.com/Rp70/fix-zimbra-innodb-crash fix-zimbra-innodb-cras
     ```
     nano /opt/zimbra/conf/my.cnf
     ```
-    * Save the file and restart mysqld `mysql.server restart`
+    * Save the file and restart mysqld server
+    ```
+    mysql.server restart
+    ```
 * Backup all databases
 ```
 cd ~/fix-zimbra-innodb-crash
@@ -34,11 +37,14 @@ cd ~/fix-zimbra-innodb-crash
 ./drop.all.sh
 ```
 * If everything goes well, disable recover mode
-    * Remove the innodb_force_recovery line from /opt/zimbra/conf/my.cnf
+    * Remove / Comment out the innodb_force_recovery line from /opt/zimbra/conf/my.cnf
     ```
     nano /opt/zimbra/conf/my.cnf
     ```
-    * Save the file and restart mysqld `mysql.server restart`
+    * Save the file and restart mysqld server
+    ```
+    mysql.server restart
+    ```
 * Then, load all dumped databases
 ```
 cd ~/fix-zimbra-innodb-crash
