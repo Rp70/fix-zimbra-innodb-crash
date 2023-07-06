@@ -29,8 +29,11 @@ do
     mysql `basename $sql .sql` < $sql
     echo -e "Updated `basename $sql .sql` \n"
 done
-mysql chat < /tmp/mysql.sql/chat.sql
-echo -e "Updated chat \n"
+if [ -f "/tmp/mysql.sql/chat.sql" ]; then
+    mysql chat < /tmp/mysql.sql/chat.sql
+    echo -e "Updated chat \n"
+fi
+
 
 echo "Verifying the restoration"
 mysql zimbra -e "select * from mailbox order by id desc limit 1"
