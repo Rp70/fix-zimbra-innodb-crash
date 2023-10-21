@@ -4,6 +4,11 @@ This repo get commands from https://wiki.zimbra.com/wiki/Mysql_Crash_Recovery
 * Verified Against: Zimbra Collaboration Suite 8.5, 8.0, 7.0
 * Tested on Zimbra 8.8.15_GA_4481
 
+# Disclaimer & Warnings
+* You run the scripts in this repo at your own risk.
+* I take no responsibility on your database crash or damage.
+* Make sure you review the scripts and understand what you do before run the scripts or follow instructions here.
+
 # Instruction
 * Clone this repo
 ```
